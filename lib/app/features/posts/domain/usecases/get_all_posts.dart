@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/helpers/failure.dart';
-import '../../../../core/helpers/success.dart';
-import '../entities/posts_entities.dart';
+import '../../../../core/helpers/helpers.dart';
+import '../entities/entities.dart';
 
 abstract class GetAllPosts {
-  Future<Either<Failure, Success<PostsEntities>>> call();
+  Future<Either<Failure, Success<List<PostsEntities>>>> call();
 }
