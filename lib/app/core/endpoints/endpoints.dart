@@ -1,1 +1,1 @@
-export './endpoints.dart';
+export './jsonplaceholder_endpoint.dart';

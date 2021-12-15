@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:json_clean/app/features/posts/domain/entities/entities.dart';
+
 class PostsModel {
   final int userId;
   final int id;
@@ -69,4 +71,7 @@ class PostsModel {
   int get hashCode {
     return userId.hashCode ^ id.hashCode ^ title.hashCode ^ body.hashCode;
   }
+
+  PostEntity toEntity() =>
+      PostEntity(userId: userId, id: id, title: title, body: body);
 }
