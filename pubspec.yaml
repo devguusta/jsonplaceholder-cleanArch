@@ -37,6 +37,7 @@ dependencies:
   flutter_modular: ^4.3.0
   flutter_bloc: ^8.0.0
   dartz: ^0.10.1
+  dio: ^4.0.4
   
 
 dev_dependencies:
