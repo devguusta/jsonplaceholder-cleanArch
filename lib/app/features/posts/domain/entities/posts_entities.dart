@@ -1,9 +1,9 @@
-class PostsEntities {
+class PostEntity {
   final int userId;
   final int id;
   final String title;
   final String body;
-  PostsEntities({
+  PostEntity({
     required this.userId,
     required this.id,
     required this.title,
