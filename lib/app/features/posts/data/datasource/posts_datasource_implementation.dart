@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:json_clean/app/core/endpoints/endpoints.dart';
-
 import 'package:json_clean/app/core/usecase.dart';
 import 'package:json_clean/app/features/posts/data/datasource/datasource.dart';
 import 'package:json_clean/app/features/posts/data/models/models.dart';
@@ -14,7 +12,7 @@ class PostsDataSourceImplementation implements IPostsDataSource {
 
   @override
   Future<List<PostEntity>> getPosts(NoParams noparams) async {
-    final response = await httpClient.get(JsonPlaceHolderEndPoints.apiKey);
+    final response = await httpClient.get("/posts");
     List<PostEntity> decodePosts = [];
     if (response.statusCode == 200 && response.data != null) {
       decodePosts = (response.data as List)
