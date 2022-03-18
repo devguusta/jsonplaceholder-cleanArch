@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:json_clean/app/features/posts/presenter/pages/post_event.dart';
 import 'package:json_clean/app/features/posts/presenter/pages/posts_bloc.dart';
 import 'package:json_clean/app/features/posts/presenter/pages/posts_state.dart';
 
@@ -12,9 +13,15 @@ class PostsPage extends StatefulWidget {
 }
 
 class _PostsPageState extends State<PostsPage> {
+  final controller = Modular.get<PostsBloc>();
   @override
   void initState() {
-    // TODO: implement initState
+    controller.stream.listen((event) {
+      if (event is PostsStateSuccess) {
+        debugPrint(event.listPost.toString());
+      }
+    });
+
     super.initState();
   }
 
@@ -23,7 +30,7 @@ class _PostsPageState extends State<PostsPage> {
     return Scaffold(
       appBar: AppBar(),
       body: BlocBuilder<PostsBloc, PostsState>(
-          bloc: Modular.get<PostsBloc>(),
+          bloc: controller,
           builder: (context, state) {
             if (state is PostsStateLoading) {
               return const Center(child: CircularProgressIndicator());
@@ -39,12 +46,12 @@ class _PostsPageState extends State<PostsPage> {
               return Center(
                   child: Column(
                 children: [
-                  Text("Não deu"),
+                  const Text("Não deu"),
                   ElevatedButton(
                       onPressed: () {
-                        Modular.get<PostsBloc>().getPosts();
+                        controller.add(PostFetchListEvent());
                       },
-                      child: Text("Olá"))
+                      child: const Text("Olá"))
                 ],
               ));
             }

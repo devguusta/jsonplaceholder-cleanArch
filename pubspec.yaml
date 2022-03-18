@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc: ^8.0.0
   dartz: ^0.10.1
   dio: ^4.0.4
+  bloc: ^8.0.3
   
 
 dev_dependencies:

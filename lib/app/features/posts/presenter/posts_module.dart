@@ -25,6 +25,11 @@ class PostsModule extends Module {
           ),
         ),
         Bind.lazySingleton(
+          (i) => PostsCubits(
+            i.get<GetAllPosts>(),
+          ),
+        ),
+        Bind.lazySingleton(
           (i) => PostsBloc(
             i.get<GetAllPosts>(),
           ),
